@@ -15,7 +15,7 @@ const TableRow: React.FC<TableRowProps> =({row, selectedRows ,handleRowSelection
                 <input type="checkbox"
                   checked={selectedRows.includes(row.name)}
                   onChange={() => handleRowSelection(row.name)}
-                  disabled={row.status === "scheduled"}
+                  disabled={row.status !== "available"}
                 />
             </td>
             <td>{row.name}</td>

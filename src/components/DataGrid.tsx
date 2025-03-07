@@ -17,16 +17,30 @@ export default function DataGrid() {
 
     const handleSelectAll = () => {
         if (selectAll) {
-          setSelectedRows([]);
+            setSelectedRows([]);
         } else {
-          setSelectedRows(sampleData.filter(row => row.status === "available").map(row => row.name));
+            setSelectedRows(sampleData.filter(row => row.status === "available").map(row => row.name));
         }
         setSelectAll(!selectAll);
     }
 
     const handleDownload = () => {
-        alert(`Downloading: ${JSON.stringify(selectedRows, null, 2)}`);
+        // Convert selectedRows data into a JSON string
+        const jsonString = JSON.stringify(selectedRows, null, 2);
+        // Create a Blob with the JSON data and specify its MIME type
+        const blob = new Blob([jsonString], { type: "application/json" });
+        // Create a temporary anchor element
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "selected_data.json"; // Name of the downloaded file
+        // Append the anchor to the DOM and trigger a click to download
+        document.body.appendChild(a);
+        a.click();
+        // Cleanup: remove the anchor and revoke the object URL
+        document.body.removeChild(a); 
+        URL.revokeObjectURL(a.href);
       };
+      
 
     return (
         <>
@@ -45,7 +59,7 @@ export default function DataGrid() {
 
                 <table>
                     <thead>
-                        <tr>
+                        <tr >
                             <th>✔</th>
                             <th>Name</th>
                             <th>Device</th>
