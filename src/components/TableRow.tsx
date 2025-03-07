@@ -1,17 +1,21 @@
+import StatusIndicator from "./StatusIndicator"
 
 
-function TableRow() {
-  return (
-    <tr>
-        <td>
-            <input type="checkbox" />
-        </td>
-        <td>{}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-  )
+const TableRow =({row})=> {
+    return (
+        <tr>
+            <td>
+                <input type="checkbox"
+                  
+                />
+            </td>
+            <td>{row.name}</td>
+            <td>{row.device}</td>
+            <td>{row.path}</td>
+            <td><StatusIndicator status={row.status} /> {row.status}</td>
+        </tr>   
+    )
 }
+
 
 export default TableRow
