@@ -25,6 +25,7 @@ export default function DataGrid() {
     }
 
     const handleDownload = () => {
+        alert(`Downloaded Items:\n${selectedRows.join("\n")}`);
         // Convert selectedRows data into a JSON string
         const jsonString = JSON.stringify(selectedRows, null, 2);
         // Create a Blob with the JSON data and specify its MIME type
