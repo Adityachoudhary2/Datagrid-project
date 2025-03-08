@@ -19,7 +19,8 @@ export default function DataGrid() {
         if (selectAll) {
             setSelectedRows([]);
         } else {
-            setSelectedRows(sampleData.filter(row => row.status === "available").map(row => row.name));
+            setSelectedRows(sampleData.map(row => row.name ));
+            
         }
         setSelectAll(!selectAll);
     }
@@ -35,7 +36,8 @@ export default function DataGrid() {
         a.href = URL.createObjectURL(blob);
         a.download = "selected_data.json"; // Name of the downloaded file
         // Append the anchor to the DOM and trigger a click to download
-        document.body.appendChild(a);
+        document.body.appendChild(a);    
+
         a.click();
         // Cleanup: remove the anchor and revoke the object URL
         document.body.removeChild(a); 
