@@ -42,8 +42,8 @@ export default function DataGrid() {
         // Cleanup: remove the anchor and revoke the object URL
         document.body.removeChild(a); 
         URL.revokeObjectURL(a.href);
+    
       };
-      
 
     return (
         <>
